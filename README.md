@@ -18,8 +18,8 @@ diff PADRAO GOOGLEBOT
 1. Requisição Padrão
 bash
 Copiar código
-curl -s -L https://revista.cade.gov.br/ > PADRAO
-Função: Realiza uma requisição HTTP ao site https://revista.cade.gov.br/.
+curl -s -L https://revista.com.br/ > PADRAO
+Função: Realiza uma requisição HTTP ao site https://revista.com.br/.
 Opções:
 -s: Silencia mensagens de progresso e erros.
 -L: Segue redirecionamentos automaticamente.
@@ -28,7 +28,7 @@ Saída: O conteúdo HTML retornado é salvo no arquivo PADRAO.
 # 2. Requisição com User-Agent Personalizado
 bash
 Copiar código
-curl -s -L -A Googlebot https://revista.cade.gov.br/ > GOOGLEBOT
+curl -s -L -A Googlebot https://revista.com.br/ > GOOGLEBOT
 Função: Simula o comportamento do robô de indexação do Google (Googlebot) ao acessar o mesmo site.
 Opções:
 -A Googlebot: Define o user-agent como "Googlebot".

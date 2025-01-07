@@ -1,15 +1,18 @@
-# Identificao_Cloaking
-Identificando e mitigando a prática de Cloaking em servidores de entrega de conteúdo diferente para usuários humanos e robôs de busca
+# Identificao_Cloaking  
+Identificando e mitigando a prática de Cloaking em servidores de entrega de conteúdo diferente para usuários humanos e robôs de busca  
+
+0. Antes de iniciar o script realize a enumeração do domínio alvo para levantar o DNS dos subdomínios, após esse passso, inclua os subdomínios no script e execute  
+1. Para consultar DNS e enumerar os subdomínios pode utilizar: https://dnsdumpster.com/  
 
 # Introdução
-Este documento detalha o uso de um comando que combina o utilitário curl e diff para investigar como servidores web respondem a requisições HTTP, analisando diferenças de conteúdo entregues com base no user-agent. Essa técnica é frequentemente usada em auditorias de segurança para identificar práticas como cloaking, onde o servidor entrega conteúdo personalizado ou manipulado para diferentes tipos de usuários ou robôs.
+Este documento detalha o uso de um comando que combina o utilitário curl e diff para investigar como servidores web respondem a requisições HTTP, analisando diferenças de conteúdo entregues com base no user-agent. Essa técnica é frequentemente usada em auditorias de segurança para identificar práticas como cloaking, onde o servidor entrega conteúdo personalizado ou manipulado para diferentes tipos de usuários ou robôs.  
 
 # Comando Analisado
 bash
 Copiar código
 curl -s -L https://revista.com.br/ > PADRAO && \
 curl -s -L -A Googlebot https://revista.com.br/ > GOOGLEBOT && \
-diff PADRAO GOOGLEBOT
+diff PADRAO GOOGLEBOT  
 
 # Análise Detalhada
 1. Requisição Padrão
@@ -20,7 +23,7 @@ Função: Realiza uma requisição HTTP ao site https://revista.cade.gov.br/.
 Opções:
 -s: Silencia mensagens de progresso e erros.
 -L: Segue redirecionamentos automaticamente.
-Saída: O conteúdo HTML retornado é salvo no arquivo PADRAO.
+Saída: O conteúdo HTML retornado é salvo no arquivo PADRAO.  
 
 # 2. Requisição com User-Agent Personalizado
 bash
@@ -29,7 +32,7 @@ curl -s -L -A Googlebot https://revista.cade.gov.br/ > GOOGLEBOT
 Função: Simula o comportamento do robô de indexação do Google (Googlebot) ao acessar o mesmo site.
 Opções:
 -A Googlebot: Define o user-agent como "Googlebot".
-Saída: O conteúdo HTML da página é salvo no arquivo GOOGLEBOT.
+Saída: O conteúdo HTML da página é salvo no arquivo GOOGLEBOT.  
 
 # 3. Comparação de Resultados
 bash
@@ -61,14 +64,15 @@ Utilize essa técnica somente para auditorias legítimas ou testes de segurança
 Exemplo de Uso
 bash
 Copiar código
-# Requisição Padrão
+
+# Requisição Padrão  
 curl -s -L https://example.com/ > PADRAO
 
-# Requisição com User-Agent Personalizado
+# Requisição com User-Agent Personalizado  
 curl -s -L -A Googlebot https://example.com/ > GOOGLEBOT
 
-# Comparação dos Conteúdos
+# Comparação dos Conteúdos  
 diff PADRAO GOOGLEBOT
 
-# Licença
+# Licença  
 Este material é destinado exclusivamente para fins educacionais e deve ser usado de forma ética e responsável.
